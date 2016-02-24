@@ -107,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 AXES_LOGIN_FAILURE_LIMIT = 3
 AXES_USE_USER_AGENT = True
 AXES_COOLOFF_TIME = 24
+AXES_LOCKOUT_TEMPLATE = '429.html'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
