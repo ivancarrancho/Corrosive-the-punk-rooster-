@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'axes',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -48,6 +49,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.FailedLoginMiddleware',
+
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -100,6 +103,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# django-axes
+AXES_LOGIN_FAILURE_LIMIT = 3
+AXES_USE_USER_AGENT = True
+AXES_COOLOFF_TIME = 24
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
