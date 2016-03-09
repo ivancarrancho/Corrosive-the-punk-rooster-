@@ -22,7 +22,7 @@ class CustomUserAdmin(admin.ModelAdmin):
     list_filter = (
         'is_active',
         'is_staff',
-    )
+        )
 
     search_fields = ('first_name', 'last_name', 'email', 'document_number')
 
@@ -33,24 +33,24 @@ class CustomUserAdmin(admin.ModelAdmin):
                 'last_name',
                 'document_type',
                 'document_number',
-            ),
-        }),
+                ),
+            }),
         ('Información de acceso', {
             'fields': (
                 'email',
                 'password1',
                 'password2',
-            ),
-        }),
-    )
+                ),
+            }),
+        )
 
     fieldsets = (
         ('Información de acceso', {
             'fields': (
                 'email',
                 'password',
-            ),
-        }),
+                ),
+            }),
         ('Información básica', {
             'fields': (
                 'first_name',
@@ -58,8 +58,8 @@ class CustomUserAdmin(admin.ModelAdmin):
                 'document_type',
                 'document_number',
                 'document_expedition',
-            ),
-        }),
+                ),
+            }),
         ('Información personal', {
             'fields': (
                 'genre',

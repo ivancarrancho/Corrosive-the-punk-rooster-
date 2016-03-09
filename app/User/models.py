@@ -30,7 +30,6 @@ class UserManager(BaseUserManager):
 
         return user
 
-
 class User(AbstractBaseUser):
     USERNAME_FIELD = 'email'
 

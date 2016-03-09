@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-
 <html>
     <head>
-        <meta charset="utf-8">
+<!--         <link rel="stylesheet" type="text/css" href="static/styles.css">
+-->        <meta charset="utf-8">
         <title>Mr. Norrea</title>
     </head>
     <body>
-
-        <p>Será posible que el sr. JaraNacho se haga un frontcito??</p>
+        <h1>C*A*N*</h1>
+        <form action='/succes/' method='POST'>
+            {% csrf_token %}
+            {{ myForm }}
+            <button type='submit'>Eviar</button>
+        </form>
     </body>
 </html>
