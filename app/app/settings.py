@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
+    
 
-    'axes',
+    
     'User',
     'app',
 ]
@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'axes.middleware.FailedLoginMiddleware',
+    
 
 ]
 
@@ -108,11 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# django-axes
-AXES_LOGIN_FAILURE_LIMIT = 3
-AXES_USE_USER_AGENT = True
-AXES_COOLOFF_TIME = 24
-AXES_LOCKOUT_TEMPLATE = '429.html'
 
 
 # Internationalization
