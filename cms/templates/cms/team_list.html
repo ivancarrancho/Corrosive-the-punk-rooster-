@@ -1,0 +1,12 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+{% for logo in object_list %}
+    <img src="{{ logo.logo.url }}">
+{% endfor %}
+
+</body>
+</html>
