@@ -10,13 +10,6 @@ class TeamUseradmin(SortableAdmin):
 
     list_display = (
         'name',
-        'category',
-        'is_active',
-    )
-
-    list_filter = (
-        'category',
-        'is_active',
     )
 
     search_fields = (

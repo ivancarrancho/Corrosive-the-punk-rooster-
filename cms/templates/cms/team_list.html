@@ -1,3 +1,5 @@
+{% load staticfiles %}
+{% block content %}
 <html>
 <head>
     <meta charset="UTF-8">
@@ -5,8 +7,9 @@
 </head>
 <body>
 {% for logo in object_list %}
-    <img src="{{ logo.logo.url }}">
+    <img src="{% static 'logo.logo.url' %}" alt="My image"/>
 {% endfor %}
 
 </body>
 </html>
+{% endblock %}

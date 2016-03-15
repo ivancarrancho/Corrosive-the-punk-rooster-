@@ -1,11 +1,10 @@
 # -*- encoding: utf-8 -*-
 from __future__ import unicode_literals
-from adminsortable.models import SortableMixin
 
 from django.db import models
 
 # Create your models here.
-class Team(SortableMixin):
+class Team(models.Model):
 
     name = models.CharField(
         max_length=40,
@@ -20,8 +19,9 @@ class Team(SortableMixin):
     )
 
     def __str__(self):
-        return self.title
+        return self.name
 
     class Meta:
+        ordering = ['id']
         verbose_name = 'Team'
         verbose_name_plural = 'Teams'
