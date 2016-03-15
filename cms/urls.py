@@ -4,5 +4,5 @@ from cms.views import TeamListView
 
 
 urlpatterns = [
-    url(r'^teams/$',TeamListView.as_view(name='team_list')),
+    url(r'^teams/$',TeamListView.as_view(),name='team_list'),
 ]
