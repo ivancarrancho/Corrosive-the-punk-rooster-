@@ -13,9 +13,15 @@ class Team(models.Model):
 
     logo = models.ImageField(
         blank=True,
-        null=True,
         max_length=255,
         verbose_name='Fotografía',
+    )
+
+    description = models.CharField(
+        max_length=400,
+        blank=True,
+        verbose_name="Descripción del equipo",
+
     )
 
     def __str__(self):
@@ -23,5 +29,5 @@ class Team(models.Model):
 
     class Meta:
         ordering = ['id']
-        verbose_name = 'Team'
-        verbose_name_plural = 'Teams'
+        verbose_name = 'Equipo'
+        verbose_name_plural = 'Equipos'
