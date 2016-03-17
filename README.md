@@ -4,30 +4,22 @@
 
 Really, we don't know about the reason of the project
 
-## Axes
-	$ pip install django-axes
+## To start install Virtualenvv
+    
+    pip install virtualenv
+    virtualenv Corrosive
+    source bin/activate (In windows maybe is not inside of bin directory 
+        ej. venv\Scripts\activate.bat or something)
+    pip install -r requirements.txt
 
-	$ PYTHONPATH=$PYTHONPATH:$PWD django-admin.py test axes --settings=axes.test_settings
+To add new libraries please add to the requirements.txt just like that:
+    
+    pip freeze > requirements.txt
 
-## Configuration
+## To run migrations
+    
+    python manage.py migrate
 
-First of all, you must add this project to your list of INSTALLED_APPS in settings.py:
+If you change something in the models, make migrations and run again.
 
-		INSTALLED_APPS = (
-		    'django.contrib.admin',
-		    'django.contrib.auth',
-		    'django.contrib.contenttypes',
-		    'django.contrib.sessions',
-		    'django.contrib.sites',
-		    ...
-		    'axes',
-		    ...
-)
-Next, install the FailedLoginMiddleware middleware:
-
-		MIDDLEWARE_CLASSES = (
-		    'django.middleware.common.CommonMiddleware',
-		    'django.contrib.sessions.middleware.SessionMiddleware',
-		    'django.contrib.auth.middleware.AuthenticationMiddleware',
-		    'axes.middleware.FailedLoginMiddleware'
-		)
+    python manage.py makemigrations 

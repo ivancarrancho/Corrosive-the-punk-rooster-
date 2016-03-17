@@ -17,4 +17,5 @@ class TeamUseradminForm(forms.ModelForm):
         fields = [
             'name',
             'logo',
+            'description',
         ]

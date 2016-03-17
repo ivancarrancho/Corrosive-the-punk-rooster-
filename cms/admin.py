@@ -10,8 +10,16 @@ class TeamUseradmin(SortableAdmin):
 
     list_display = (
         'name',
+        'logo',
+        'description',
     )
 
     search_fields = (
+        'name',
+        'logo',
+        'description',
+    )
+
+    list_filter = (
         'name',
     )

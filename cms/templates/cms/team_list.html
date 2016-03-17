@@ -7,9 +7,11 @@
 </head>
 <body>
 {% for logo in object_list %}
-    <img src="{% static 'logo.logo.url' %}" alt="My image"/>
+    <img src="{{ logo.logo.url }}" alt="My image"/>
+{{ logo.name }}
+{{ logo.logo }}
 {% endfor %}
-
+    <br>
 </body>
 </html>
 {% endblock %}
