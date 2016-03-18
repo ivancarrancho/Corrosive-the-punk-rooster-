@@ -1,0 +1,17 @@
+{% load staticfiles %}
+{% block content %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+{% for logo in object_list %}
+    <img src="{{ logo.logo.url }}" alt="My image"/>
+{{ logo.name }}
+{{ logo.logo }}
+{% endfor %}
+    <br>
+</body>
+</html>
+{% endblock %}
