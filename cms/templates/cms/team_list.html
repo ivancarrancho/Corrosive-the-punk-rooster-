@@ -6,11 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-{% for logo in object_list %}
-    <img src="{{ logo.logo.url }}" alt="My image"/>
-{{ logo.name }}
-{{ logo.logo }}
-{% endfor %}
+    <ul style="list-style:square">
+        {% for logo in object_list %}
+        <li>
+            <img src="{{ logo.logo.url }}" alt="My image"/>
+        </li>
+        <li>
+            {{ logo.name }}
+        </li>
+        <li>
+            {{ logo.logo }}
+        </li>
+    </ul>
+    {% endfor %}
     <br>
 </body>
 </html>
