@@ -15,13 +15,6 @@ tmp
 *.mo
 *.sql
 
-# OS files
-.DS_Store
-ehthumbs.db
-Icon?
-Thumbs.db
-*~
-
 # Configuration files
 /app/local_settings.py
 .idea
