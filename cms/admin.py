@@ -1,12 +1,24 @@
 from django.contrib import admin
 from cms.models import Team
-from cms.forms import TeamUseradminForm
+from cms.models import Picture
+# from cms.forms import TeamUseradminForm
 from adminsortable.admin import SortableAdmin
 
+class Pictureadmin(admin.TabularInline):
+    model = Picture
+    extra = 1
 
+    fields = (
+        'name',
+        'image',
+    )
+    ordering = (
+        'id',
+    )
 @admin.register(Team)
 class TeamUseradmin(SortableAdmin):
-    form = TeamUseradminForm
+    model = Team
+    inlines = [Pictureadmin]
 
     list_display = (
         'name',
@@ -22,4 +34,7 @@ class TeamUseradmin(SortableAdmin):
 
     list_filter = (
         'name',
+    )
+    ordering = (
+        'id',
     )

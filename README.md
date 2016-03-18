@@ -28,3 +28,8 @@ If you change something in the models, make migrations and run again.
 ```bash
     $ python manage.py makemigrations 
 ```
+## To create a superuser
+
+```bash
+    $ python manage.py createsuperuser
+```
