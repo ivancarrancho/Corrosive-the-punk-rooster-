@@ -4,7 +4,7 @@
 
 Really, we don't know about the reason of the project
 
-## To start install Virtualenvv
+## To start install Virtualenv
     
 ```bash
     $ pip install virtualenv
@@ -18,18 +18,66 @@ To add new libraries please add to the requirements.txt just like that:
 ```bash
     $ pip freeze > requirements.txt
 ```
-## To run migrations
+## To create and run migrations
     
-```bash
-    $ python manage.py migrate
-```
 If you change something in the models, make migrations and run again.
-
 ```bash
     $ python manage.py makemigrations 
 ```
-## To create a superuser
+```bash
+    $ python manage.py migrate
+```
+
+## To create a superuser and run
 
 ```bash
     $ python manage.py createsuperuser
+    $ python manage.py runserver
+```
+## Gulp
+
+Install Node
+    https://nodejs.org/en/
+    
+ ```bash 
+    $ npm init
+    $ npm install gulp -g
+    Agregar (node_modules/.bin/ en $Path) Windows
+    $ npm i -D gulp
+    $ npm install stylus -g
+    $ npm i -D gulp-webserver
+    $ npm i -D gulp-stylus
+    $ npm i -D nib
+    $ npm i -D gulp-minify-css
+    $ npm i -D browserify
+    $ npm i -D vinyl-source-stream
+    $ npm i -D vinyl-buffer
+    $ npm i -D gulp-uglify
+    $ npm i -D gulp-image-optimization
+    $ npm i -D gulp-smoosher
+
+    #Run 
+    $ gulp build:js
+    $ gulp
+``` 
+
+## Add browserSync (to solve gulp issues)
+
+```bash
+    npm install browser-sync --save
+```
+```bash
+
+    # add to gulfile.js
+    $ var browserSync = require("browser-sync")
+
+    # and
+    $ browserSync.init({
+    $ host: "0.0.0.0",
+    $ notify: false,
+    $ port: 8080,
+    $ server: {
+        baseDir: ['User/templates/User', 'app']
+        },
+    });
 ```

@@ -10,6 +10,8 @@ var uglify = require('gulp-uglify');
 var smoosher = require('gulp-smoosher');
 var imageop = require('gulp-image-optimization');
 
+var browserSync = require("browser-sync");
+
 var config = {
   styles: {
     main: 'app/static/styles/main.styl',
@@ -31,12 +33,14 @@ var config = {
 }
 
 gulp.task('server', function() {
-  gulp.src('User/templates/User')
-    .pipe(webserver({
-      host: '0.0.0.0',
-      port: 8080,
-      livereload: true
-    }));
+  browserSync.init({
+    host: "0.0.0.0",
+    notify: false,
+    port: 8080,
+    server: {
+      baseDir: ['User/templates/User', 'app']
+    },
+  });
 });
 
 gulp.task('build:css', function() {
