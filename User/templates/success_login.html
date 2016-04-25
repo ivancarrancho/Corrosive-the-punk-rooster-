@@ -1,10 +1,22 @@
 {% extends 'index.html' %}
-{% block login_content %} 
-<p>
-	Bienvenido
-</p>
-<p>Ir donde mi padre
-	<a href="http://www.atlnacional.com.co/">GO</a>
-</p>
+{% block login_content %}
+
+    {% if user.is_authenticated %}
+        <p>
+           Bienvenido {{ user.username }}, puedes ir a <a href="{% url 'user:create_data' %}">completar datos</a>
+
+        </p>
+    {% else %}
+        <p>
+           El usuario se creó correctmanete, <a href="{% url 'user:authentication' %}">loguearme</a>
+        </p>
+    {% endif %}
+
+    {% for data in object_list %}
+        <p>{{ object_list }}</p>
+    {% endfor %}
+    <p>Ir donde mi padre
+        <a href="http://www.atlnacional.com.co/">GO</a>
+    </p>
 
 {% endblock %}

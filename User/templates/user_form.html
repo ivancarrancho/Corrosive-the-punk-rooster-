@@ -1,11 +1,15 @@
 {% extends 'index.html' %}
-{% block login_content %} 
+{% block login_content %}
 
-<form action='/create/' method='post'>
-    {% csrf_token %}
-    {{ myForm.as_p  }}
-    <button type='submit'>Eviar</button>
-</form>
-
-
+{% if user.is_authenticated %}
+    <form action='/create/' method='post'>
+        {% csrf_token %}
+        {{ myForm.as_p  }}
+        <button type='submit'>Eviar</button>
+    </form>
+{% else %}
+    <p>Debes loguearte para poder registrar datos.
+    </p>
+    <a href="{% url 'user:authentication' %}">Loguearme</a>
+{% endif %}
 {% endblock %}

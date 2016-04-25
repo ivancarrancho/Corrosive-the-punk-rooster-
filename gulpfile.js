@@ -19,7 +19,7 @@ var config = {
     output: 'app/static/css'
   },
   html: {
-    watch: 'User/templates/User/index.html'
+    watch: 'User/templates/index.html'
   },
   scripts: {
     main: 'app/static/scripts/main.js',
@@ -38,7 +38,7 @@ gulp.task('server', function() {
     notify: false,
     port: 8080,
     server: {
-      baseDir: ['User/templates/User', 'app']
+      baseDir: ['User/templates', 'app']
     },
   });
 });

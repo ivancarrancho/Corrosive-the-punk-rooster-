@@ -28,6 +28,7 @@ tmp
 *.log
 *.mo
 *.sql
+*.json
 
 /app/static/bower_components
 /app/static/css/*.css
@@ -39,3 +40,4 @@ tmp
 /Lib
 /Scripts
 /Include
+/static

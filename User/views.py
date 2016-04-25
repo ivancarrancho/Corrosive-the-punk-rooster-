@@ -3,8 +3,11 @@ from django.views.generic import ListView, TemplateView
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
+from django.contrib.auth import logout
 from User.forms import RegistrationForm
 from User.models import UserData
+from .mixins import LoginRequiredMixin
+
 
 
 def authentication(request):
@@ -24,6 +27,11 @@ def authentication(request):
 
             return redirect('/success-loguin')
 
+        elif action == 'logout':
+            print 'hellow mtf'
+            logout(request)
+            return redirect('/success-logout')
+
     return render(request, 'login.html', {})
 
 def create_data(request):
@@ -34,19 +42,25 @@ def create_data(request):
             return redirect('/success-loguin')
     else:
         myForm = RegistrationForm()
-        
+
     return render(request, 'user_form.html', {'myForm': myForm})
 
 class UserPageView(ListView):
     model = UserData
     template_name = "user_list.html"
 
-
     def get_queryset(self):
         return User.objects.all()
 
-class SuccessLoginView(TemplateView):
+class SuccessLoginView(LoginRequiredMixin, TemplateView):
+    model = UserData
     template_name = "success_login.html"
+
+    def get_queryset(self):
+        return UserData.objects.all()
 
 class SuccessSignUpView(TemplateView):
     template_name = "success_sign_up.html"
+
+class SuccessLogoutView(TemplateView):
+    template_name = "success_logout.html"
