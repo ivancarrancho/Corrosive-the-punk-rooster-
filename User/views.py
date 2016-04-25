@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from User.forms import RegistrationForm
+from User.models import UserData
 
 
 def authentication(request):
@@ -30,7 +31,6 @@ def create_data(request):
         myForm = RegistrationForm(request.POST)
         if myForm.is_valid():
             myForm.save()
-            print 'hello'
             return redirect('/success-loguin')
     else:
         myForm = RegistrationForm()
@@ -38,7 +38,9 @@ def create_data(request):
     return render(request, 'user_form.html', {'myForm': myForm})
 
 class UserPageView(ListView):
-    model = User
+    model = UserData
+    template_name = "user_list.html"
+
 
     def get_queryset(self):
         return User.objects.all()
