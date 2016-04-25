@@ -1,10 +1,14 @@
 {% extends 'index.html' %}
-{% block login_content %} 
-<p>
-	El Usuario se creó correctamente
-</p>
-<p>
-	<a href="{% url 'user:create_data' %}">Completar datos</a>
-</p> 
+{% block login_content %}
+    {% if user.is_authenticated %}
+        <p>
+        	<a href="{% url 'user:create_data' %}">Completar datos</a>
+        </p>
+    {% else %}
+        <p>
+            Felicidades, el Usuario se creó correctamente.
+        </p>
+        <a href="{% url 'user:authentication' %}">Loguearme</a>
+    {% endif %}
 
 {% endblock %}
