@@ -6,32 +6,21 @@ from django.contrib.auth.models import BaseUserManager
 from django.core.mail import send_mail
 from django.db import models
 
+class UserData(models.Model):
 
-class UserManager(BaseUserManager):
-    def create_user(self, email, password=None, is_active=True, **kwargs):
-        if not email:
-            raise ValueError('Users must have an email address')
+    username = models.CharField(
+        unique=True,
+        verbose_name='Nombre de usuario',
+        max_length=100,
+    )
 
-        user = self.model(
-            email=UserManager.normalize_email(email),
-            is_active=is_active,
-            **kwargs
-        )
-        user.set_password(password)
-        user.save(using=self._db)
+    user_password = models.CharField(
+        unique=True,
+        verbose_name='Password de usuario',
+        max_length=100,
+    )
 
-        return user
-
-    def create_superuser(self, **kwargs):
-        user = self.create_user(**kwargs)
-        user.is_staff = True
-        user.is_superuser = True
-        user.save(using=self._db)
-
-        return user
-
-class User(AbstractBaseUser):
-    USERNAME_FIELD = 'email'
+class UserDataComplete(models.Model):
 
     REQUIRED_FIELDS = [
         'first_name',
@@ -129,13 +118,6 @@ class User(AbstractBaseUser):
         verbose_name='Teléfono Celular',
     )
 
-    home_phone = models.CharField(
-        blank=True,
-        null=True,
-        max_length=64,
-        verbose_name='Teléfono Fijo',
-    )
-
     genre = models.PositiveSmallIntegerField(
         blank=True,
         null=True,
@@ -143,66 +125,11 @@ class User(AbstractBaseUser):
         verbose_name='Genero',
     )
 
-    company_name = models.CharField(
-        blank=True,
-        null=True,
-        max_length=128,
-        verbose_name='Empresa',
-    )
-
-    company_department = models.CharField(
-        blank=True,
-        null=True,
-        max_length=128,
-        verbose_name='Departamento',
-    )
-
-    company_city = models.CharField(
-        blank=True,
-        null=True,
-        max_length=128,
-        verbose_name='Ciudad',
-    )
-
-    company_address = models.CharField(
-        blank=True,
-        null=True,
-        max_length=128,
-        verbose_name='Dirección',
-    )
-
-    company_position = models.CharField(
-        blank=True,
-        null=True,
-        max_length=128,
-        verbose_name='Cargo',
-    )
-
-    work_phone = models.CharField(
-        blank=True,
-        null=True,
-        max_length=64,
-        verbose_name='Teléfono',
-    )
-
-    is_staff = models.BooleanField(
-        default=False,
-        verbose_name='Administrador',
-        help_text='Indica si puede entrar al sitio de administración.',
-    )
-
-    is_active = models.BooleanField(
-        default=False,
-        verbose_name='Activo',
-        help_text='Indica si el usuario puede ser tratado como activo.',
-    )
-
     date_joined = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Fecha de registro',
     )
 
-    objects = UserManager()
 
     def get_short_name(self):
         return self.first_name
@@ -210,8 +137,8 @@ class User(AbstractBaseUser):
     def get_full_name(self):
         return '{0} {1}'.format(self.first_name, self.last_name)
 
-    def email_user(self, subject, message, from_email=None, **kwargs):
-        send_mail(subject, message, from_email, [self.email], **kwargs)
+    # def email_user(self, subject, message, from_email=None, **kwargs):
+    #     send_mail(subject, message, from_email, [self.email], **kwargs)
 
     class Meta:
         verbose_name = 'usuario'

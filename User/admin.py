@@ -2,12 +2,12 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
-from User.models import User
+from User.models import UserDataComplete
 
 
 admin.site.unregister(Group)
 
-@admin.register(User)
+@admin.register(UserDataComplete)
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -15,14 +15,7 @@ class CustomUserAdmin(admin.ModelAdmin):
         'last_name',
         'email',
         'document_number',
-        'is_active',
-        'is_staff',
     )
-
-    list_filter = (
-        'is_active',
-        'is_staff',
-        )
 
     search_fields = ('first_name', 'last_name', 'email', 'document_number')
 
@@ -35,20 +28,20 @@ class CustomUserAdmin(admin.ModelAdmin):
                 'document_number',
                 ),
             }),
-        ('Información de acceso', {
-            'fields': (
-                'email',
-                'password1',
-                'password2',
-                ),
-            }),
+        # ('Información de acceso', {
+        #     'fields': (
+        #         'email',
+        #         'password1',
+        #         'password2',
+        #         ),
+        #     }),
         )
 
     fieldsets = (
         ('Información de acceso', {
             'fields': (
                 'email',
-                'password',
+                # 'password',
                 ),
             }),
         ('Información básica', {
@@ -69,31 +62,8 @@ class CustomUserAdmin(admin.ModelAdmin):
                 'city',
                 'address',
                 'mobile_phone',
-                'home_phone',
             ),
-        }),
-        ('Información laboral', {
-            'fields': (
-                'company_name',
-                'company_department',
-                'company_city',
-                'company_address',
-                'company_position',
-                'work_phone',
-            ),
-        }),
-        ('Permisos', {
-            'fields': (
-                'is_active',
-                'is_staff',
-            ),
-        }),
-        ('Fechas importantes', {
-            'fields': (
-                'last_login',
-                'date_joined',
-            ),
-        }),
+        })
     )
 
     ordering = ('first_name', 'last_name')
