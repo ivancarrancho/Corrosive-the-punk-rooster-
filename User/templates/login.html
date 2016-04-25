@@ -1,21 +1,30 @@
 {% extends 'index.html' %}
 
-{% block login_content %} 
-	<h2>Loguin</h2>
-	<form action="" method="post">
-		{% csrf_token %}
-		<input type="hidden" name="action" value="login">
-		<input type="text" name="username">
-		<input type="text" name="password">
-		<button type="submit">Login</button>
-	</form>
-	<br>
-	<h2>signup</h2>
-	<form action="" method="post">
-		{% csrf_token %}
-		<input type="hidden" name="action" value="signup">
-		<input type="text" name="username">
-		<input type="text" name="password">
-		<button type="submit">signup</button>
-	</form>
+{% block login_content %}
+    {% if user.is_authenticated %}
+        <h2>Logout</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="logout">
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <h2>Loguin</h2>
+        <form action="" method="post">
+           {% csrf_token %}
+           <input type="hidden" name="action" value="login">
+           <input type="text" name="username">
+           <input type="text" name="password">
+           <button type="submit">Login</button>
+       </form>
+       <br>
+       <h2>signup</h2>
+       <form action="" method="post">
+           {% csrf_token %}
+           <input type="hidden" name="action" value="signup">
+           <input type="text" name="username">
+           <input type="text" name="password">
+           <button type="submit">signup</button>
+       </form>
+    {% endif %}
 {% endblock %}
