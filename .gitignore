@@ -21,4 +21,21 @@ tmp
 .tags
 .tags_sorted_by_file
 
-# Folders
+*.pyc
+*.swo
+*.swp
+*.swn
+*.log
+*.mo
+*.sql
+
+/app/static/bower_components
+/app/static/css/*.css
+/app/static/css/*.css.map
+/app/static/sass/neat
+/app/static/sass/bourbon
+/app/templates/email.html
+
+/Lib
+/Scripts
+/Include

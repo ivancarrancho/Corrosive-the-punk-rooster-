@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+{% block login_content %} 
+<p>
+	El Usuario se creó correctamente
+</p>
+<p>Volver a loguearse</p>
+<a href="{% url 'user:authentication' %}">Login</a>      
+
+{% endblock %}

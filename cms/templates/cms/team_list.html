@@ -1,11 +1,7 @@
+{% extends 'index.html' %}
+
 {% load staticfiles %}
-{% block content %}
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+{% block login_content %}
     <ul style="list-style:square">
         {% for logo in object_list %}
         <li>
@@ -20,6 +16,4 @@
     </ul>
     {% endfor %}
     <br>
-</body>
-</html>
 {% endblock %}

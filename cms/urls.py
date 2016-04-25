@@ -8,4 +8,4 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^teams/$',TeamListView.as_view(),name='team_list'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+	]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

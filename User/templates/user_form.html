@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block login_content %} 
+
+
+<form action='/create/' method='post'>
+    {% csrf_token %}
+    {{ myForm.as_p  }}
+    <button type='submit'>Eviar</button>
+</form>
+
+
+{% endblock %}
