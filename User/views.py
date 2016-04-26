@@ -53,7 +53,11 @@ class UserPageView(ListView):
         return User.objects.all()
 
 class SuccessLoginView(LoginRequiredMixin, TemplateView):
+    model = UserData
     template_name = "success_login.html"
+
+    def get_queryset(self):
+        return UserData.objects.all()
 
 class SuccessSignUpView(TemplateView):
     template_name = "success_sign_up.html"

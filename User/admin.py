@@ -2,12 +2,12 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
-from User.models import UserDataComplete
+from User.models import UserData
 
 
 admin.site.unregister(Group)
 
-@admin.register(UserDataComplete)
+@admin.register(UserData)
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = (
         'id',

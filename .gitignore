@@ -28,6 +28,8 @@ tmp
 *.log
 *.mo
 *.sql
+*.sqlite3
+*.json
 
 /app/static/bower_components
 /app/static/css/*.css

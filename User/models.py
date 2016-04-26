@@ -19,8 +19,7 @@ class UserData(models.Model):
         verbose_name='Password de usuario',
         max_length=100,
     )
-
-class UserDataComplete(models.Model):
+# class UserDataComplete(models.Model):
 
     REQUIRED_FIELDS = [
         'first_name',

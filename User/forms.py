@@ -1,9 +1,9 @@
 from django import forms
-from User.models import UserDataComplete
+from User.models import UserData
 
 class RegistrationForm(forms.ModelForm):
     class Meta:
-        model = UserDataComplete
+        model = UserData
         fields = "__all__"
 
     # def __init__(self, *args, **kwargs):
