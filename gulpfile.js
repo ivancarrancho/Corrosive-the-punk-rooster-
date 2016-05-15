@@ -9,7 +9,6 @@ var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var smoosher = require('gulp-smoosher');
 var imageop = require('gulp-image-optimization');
-
 var browserSync = require("browser-sync");
 
 var config = {
@@ -23,7 +22,7 @@ var config = {
   },
   scripts: {
     main: 'app/static/scripts/main.js',
-    watch: 'app/static/script/**/*.js',
+    watch: 'app/static/scripts/**/*.js',
     output: 'app/static/js'
   },
   images: {
@@ -51,9 +50,11 @@ gulp.task('build:css', function() {
     }))
     .pipe(minifyCSS())
     .pipe(gulp.dest(config.styles.output));
+    browserSync.reload();
 });
 
 gulp.task('build:js', function() {
+
   return browserify(config.scripts.main)
     .bundle()
     .pipe(source('bundle.js'))
@@ -64,7 +65,7 @@ gulp.task('build:js', function() {
 
 gulp.task('watch', function() {
   gulp.watch(config.images.watch, ['images']);
-  gulp.watch(config.scripts.watch, ['build:js']);
+  gulp.watch(config.scripts.watch, ['js-watch']);
   gulp.watch(config.styles.watch, ['build:css']);
   gulp.watch(config.html.watch, ['build']);
 });
@@ -77,6 +78,7 @@ gulp.task('images', function() {
       interlaced: true
     }))
     .pipe(gulp.dest(config.images.output));
+    browserSync.reload();
 });
 
 gulp.task('inline', function() {
@@ -84,6 +86,8 @@ gulp.task('inline', function() {
     .pipe(smoosher())
     .pipe(gulp.dest('./dist'));
 });
+
+gulp.task('js-watch', ['build:js'], browserSync.reload);
 
 gulp.task('build', ['build:css', 'build:js', 'images']);
 

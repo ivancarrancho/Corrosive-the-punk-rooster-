@@ -86,5 +86,5 @@ Install Node
 Add "django_gulp" to your INSTALLED_APPS
 
 ```bash
-    sudo pip install django_gulp"
+    $ sudo pip install django_gulp
 ```
