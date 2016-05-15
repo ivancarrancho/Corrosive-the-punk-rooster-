@@ -81,3 +81,10 @@ Install Node
         },
     });
 ```
+## Integrate Djago + Gulp
+
+Add "django_gulp" to your INSTALLED_APPS
+
+```bash
+    sudo pip install django_gulp"
+```

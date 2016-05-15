@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'adminsortable',
     'User',
     'cms',
     'app',
+    'django_gulp',
 ]
 
 MIDDLEWARE_CLASSES = [
