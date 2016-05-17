@@ -10,6 +10,7 @@ var uglify = require('gulp-uglify');
 var smoosher = require('gulp-smoosher');
 var imageop = require('gulp-image-optimization');
 var browserSync = require("browser-sync");
+var exec = require('child_process').exec; 
 
 var config = {
   styles: {
@@ -31,7 +32,7 @@ var config = {
   }
 }
 
-gulp.task('server', function() {
+gulp.task('server',  function() {
   browserSync.init({
     host: "0.0.0.0",
     notify: false,
@@ -64,10 +65,10 @@ gulp.task('build:js', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(config.images.watch, ['images']);
-  gulp.watch(config.scripts.watch, ['js-watch']);
-  gulp.watch(config.styles.watch, ['build:css']);
-  gulp.watch(config.html.watch, ['build']);
+  gulp.watch(config.images.watch, ['images','resetserver']);
+  gulp.watch(config.scripts.watch, ['js-watch','resetserver']);
+  gulp.watch(config.styles.watch, ['build:css', 'resetserver']);
+  gulp.watch(config.html.watch, ['build', 'resetserver']);
 });
 
 gulp.task('images', function() {
@@ -87,8 +88,25 @@ gulp.task('inline', function() {
     .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('runserver', function() { 
+  var proc = exec('python manage.py runserver') 
+
+  }) 
+
+gulp.task('stopserver', function() { 
+  var proc = exec('pkill -f "python manage.py runserver"') 
+
+  })
+
+gulp.task('resetserver', function() {
+    var proc2 = exec('xdg-open http://localhost:8000')
+    var proc1 = exec('pkill -f "python manage.py runserver"')
+    var proc = exec('python manage.py runserver')
+  })
+
+
 gulp.task('js-watch', ['build:js'], browserSync.reload);
 
-gulp.task('build', ['build:css', 'build:js', 'images']);
+gulp.task('build', ['build:css', 'build:js', 'images', 'resetserver']);
 
 gulp.task('default', ['server', 'watch', 'build']);
