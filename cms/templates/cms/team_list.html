@@ -1,19 +1,37 @@
 {% extends 'index.html' %}
-
-{% load staticfiles %}
+{% block title %}
+Team list
+{% endblock title %}
 {% block login_content %}
-    <ul style="list-style:square">
-        {% for logo in object_list %}
-        <li>
-            <img src="{{ logo.logo.url }}" alt="My image"/>
-        </li>
-        <li>
-            {{ logo.name }}
-        </li>
-        <li>
-            {{ logo.logo }}
-        </li>
-    </ul>
-    {% endfor %}
-    <br>
+
+    <div class="container">
+        <div class="row main-container">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    
+                    <thead>
+                        <tr>
+                            <th>Logo Name</th>
+                            <th>Logo Image</th>
+                        </tr>
+                    </thead>
+                    {% for logo in object_list %}
+                    <tbody>
+                        <tr>
+                            <th>
+                                {{ logo.name }}
+                            </th>
+                            <th>
+                                <img height="100px" width="100px" src="{{ logo.logo.url }}" alt="My image"/>
+                            </th>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+    </div>
+
 {% endblock %}
+

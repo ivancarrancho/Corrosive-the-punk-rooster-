@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^success-logout', SuccessLogoutView.as_view(), name='success-logout'),
     url(r'^login/$', views.authentication, name='authentication'),
     url(r'^create', views.create_data, name='create_data'),
-
+    url(r'^signup', UserPageView.as_view(), name='signup'),
+    
 ]
