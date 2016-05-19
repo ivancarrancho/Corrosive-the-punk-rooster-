@@ -1,30 +1,43 @@
 {% extends 'index.html' %}
+{% block title %}
+Users
+{% endblock title %}
 {% block login_content %}
-        <h1>Usuarios:</h1>
-        {% for data in object_list %}
-        <div class="logo">
+      
+<div class="container">
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                
+                <h5>USUARIOS</h5>
 
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>State</th>
+                        <th>Autenticate</th>
+                    </tr>
+                </thead>         
+
+                {% for data in object_list %}
+                <tbody>
+                    <tr>
+                        <td>{{ data.first_name }}
+                            {{ data.username }}
+                        </td>
+                        <td>{{ data.email }}</td>
+                        <td>{{ data.is_active }}</td>
+                        <td>{{ data.is_authenticated }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}  
+                
+            </table>
         </div>
-        <div class="user-info">
-            <h3>
-                {{ data.first_name }}
-                {{ data.username }}
-            </h3>
-            <h3>
-                {{ data.last_name }}
-            </h3>
-            <h3>
-                {{ data.email }}
-            </h3>
-            <h3>
-                {{ data.is_active }}
-            </h3>
-            <h3>
-                <p>
-                    {{ data.is_authenticated }}
-                </p>
-            </h3>
-            <br>
-        </div>
-    {% endfor %}
-    {% endblock %}
+    </div>
+      
+</div>
+        
+{% endblock %}
+

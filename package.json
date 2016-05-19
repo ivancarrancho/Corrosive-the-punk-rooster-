@@ -27,7 +27,8 @@
     "gulp-webserver": "~0.9.1",
     "nib": "~1.1.0",
     "vinyl-buffer": "~1.0.0",
-    "vinyl-source-stream": "~1.1.0"
+    "vinyl-source-stream": "~1.1.0",
+    "gulp-livereload": "~3.8.1"
   },
   "dependencies": {
     "browser-sync": "~2.12.8"

@@ -1,41 +1,67 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Titulo</title>
-
-
-          <!-- smoosh -->
-          <link rel="stylesheet" href="static/css/main.css">
-          <!-- endsmoosh -->
-          <!-- smoosh -->
-          <link rel="stylesheet" href="static/css/bootstrap.min.css">
-          <!-- endsmoosh -->
-          <!-- smoosh -->
-          <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
-          <!-- endsmoosh -->
-          
-
-        
-    <div style="width: 100%; height: 100%; background-color: gray">
-        <a href="{% url 'cms:team_list' %}">Go to pictures</a>
-        <br>
-        <a href="{% url 'user:authentication' %}">Login</a>
-        <br>
-        <a href="{% url 'user:user_list' %}">Home</a>
-    </div>
-    </head>
-    <body class="test">
-        {% block login_content %} {% endblock %}
-
-xxx
-
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+    <title>{% block title %}{% endblock title %}</title>
     <!-- smoosh -->
-    <script src="static/js/bundle.js"></script>
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- endsmoosh -->
-    </body>
-    <footer>
-    </footer>
+    <!-- smoosh -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- endsmoosh -->
+    <!-- smoosh -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+    <!-- endsmoosh -->
+  </head>
+<body>
+
+<div class="container-fluid">
+
+  <header class="row">
+    <div class="logo col-lg-2">
+        
+        <img class="logo-image col-lg-offset-3 " src="{% static 'img/logo.jpg' %}" alt="El unico grande">
+
+      </div>
+    <nav class="col-lg-10">
+      <ul class="col-lg-offset-3">
+        <li>
+          <a class="item" href="#">Home</a>    
+        </li> 
+        <li>
+          <a class="item" href="{% url 'user:user_list' %}">Users</a>    
+        </li>
+        <li>
+          <a class="item" href="{% url 'cms:team_list' %}">Pictures</a>  
+        </li>
+        <li>
+          <a class="item" href="{% url 'user:authentication' %}">Access to Intranet</a>   
+        </li>  
+        <li>
+          <a class="item" href="#">Access to Admin</a>    
+        </li>  
+         
+      </ul>
+    </nav>
+  </header>
+</div>
+
+  {% block login_content %} {% endblock %}
+
+  <!-- smoosh -->
+  <script src="{% static 'js/bundle.js' %}"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- endsmoosh -->
+</body>
+
+<footer>
+    <h4>c2media</h4>
+
+</footer>
+
 </html>
