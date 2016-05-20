@@ -2,15 +2,12 @@
 {% block title %}
 Users
 {% endblock title %}
-{% block login_content %}
-      
+{% block login_content %}      
 <div class="container">
     <div class="row">
         <div class="table-responsive">
-            <table class="table table-hover">
-                
+            <table class="table table-hover">                
                 <h5>USUARIOS</h5>
-
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -18,8 +15,7 @@ Users
                         <th>State</th>
                         <th>Autenticate</th>
                     </tr>
-                </thead>         
-
+                </thead>
                 {% for data in object_list %}
                 <tbody>
                     <tr>
@@ -31,13 +27,9 @@ Users
                         <td>{{ data.is_authenticated }}</td>
                     </tr>
                 </tbody>
-                {% endfor %}  
-                
+                {% endfor %}                  
             </table>
         </div>
-    </div>
-      
-</div>
-        
+    </div>      
+</div>        
 {% endblock %}
-
