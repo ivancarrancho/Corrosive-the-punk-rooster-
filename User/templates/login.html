@@ -1,9 +1,8 @@
 {% extends 'index.html' %}
 {% block title %}
 Login
-{% endblock title%}
+{% endblock title %}
 {% block login_content %}
-
 <div class="container-main">
   <div class="container">
     <div class="row container-login center-block">
@@ -12,8 +11,7 @@ Login
         <form action="" method="post">
           {% csrf_token %}
           <input type="hidden" name="action" value="logout">
-          <button class="btn btn-primary" type="submit">Logout</button>
-          
+          <button class="btn btn-primary" type="submit">Logout</button>          
         </form>
       {% else %}
         <form action="" method="post">
@@ -23,16 +21,11 @@ Login
           <input type="password" name="password">
           <button type="submit" class="btn btn-primary">Login</button>
           <a href="#"><button type="button" class="btn btn-primary">Signup</button></a>
-        </form>
-         
-        
+        </form>        
       {% endif %}
     </div>
   </div>
 </div>
-
-
-
 {% endblock %}
 
 

@@ -52,6 +52,10 @@ class UserPageView(ListView):
     def get_queryset(self):
         return User.objects.all()
 
+class HomePageView(ListView):
+    model = UserData
+    template_name = "home.html"
+
 class SuccessLoginView(LoginRequiredMixin, TemplateView):
     model = UserData
     template_name = "success_login.html"
